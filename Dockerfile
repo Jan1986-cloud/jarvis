@@ -5,7 +5,7 @@ COPY jarvis-frontend/ ./
 RUN npm install
 RUN npm run build
 
-FROM python:3.10-slim
+FROM python:3.10-bullseye
 
 WORKDIR /app
 
@@ -16,4 +16,4 @@ COPY jarvis-backend/ ./
 
 COPY --from=frontend-builder /app/jarvis-frontend/dist ./src/static
 
-CMD gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 30 wsgi:application
+CMD cd src && gunicorn --bind 0.0.0.0:$PORT --workers 4 --timeout 30 --worker-class uvicorn.workers.UvicornWorker wsgi:app
