@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Google Workspace AI Assistant with Jarvis personality",
   "scripts": {
-    "build": "bash build.sh",
     "start": "cd jarvis-backend && gunicorn --bind 0.0.0.0:$PORT --workers 2 wsgi:application",
     "dev": "concurrently \"cd jarvis-backend && python src/main.py\" \"cd jarvis-frontend && npm run dev\"",
     "install-all": "cd jarvis-backend && pip install -r requirements.txt && cd ../jarvis-frontend && npm install"
