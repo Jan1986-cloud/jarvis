@@ -3,6 +3,7 @@ FROM node:20-alpine AS frontend-builder
 WORKDIR /app/jarvis-frontend
 COPY jarvis-frontend/ ./
 RUN npm install
+RUN chmod +x ./node_modules/.bin/vite
 RUN npm run build
 
 FROM python:3.10-bullseye
@@ -16,4 +17,4 @@ COPY jarvis-backend/ ./
 
 COPY --from=frontend-builder /app/jarvis-frontend/dist ./src/static
 
-CMD cd src && gunicorn --bind 0.0.0.0:$PORT --workers 4 --timeout 30 --worker-class uvicorn.workers.UvicornWorker wsgi:app
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "--chdir", "src", "wsgi:app"]
