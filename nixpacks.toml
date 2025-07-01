@@ -1,12 +1,10 @@
 [languages]
 names=["python", "node"]
 
-[phases.install]
-commands=["pip install -r jarvis-backend-fixed/requirements.txt", "npm install --prefix jarvis-frontend-fixed"]
+[phases.setup]
 
 [phases.build]
-commands=["node build.js"]
+commands = ["npm run build"]
 
 [start]
-
-command="cd jarvis-backend-fixed && gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 120 wsgi:application"
+command = "cd jarvis-backend-fixed && gunicorn --bind 0.0.0.0:5000 --workers 2 --timeout 30 wsgi:application"
