@@ -1,9 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import uuid
 
-# Import db from main
-from main import db
+from extensions import db
 
 class Message(db.Model):
     __tablename__ = 'messages'

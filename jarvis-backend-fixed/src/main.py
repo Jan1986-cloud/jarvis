@@ -1,8 +1,7 @@
 import os
 import sys
 from flask import Flask, jsonify, send_from_directory
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
+from extensions import db, cors
 
 # Add src to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -16,8 +15,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions
-db = SQLAlchemy(app)
-CORS(app, origins=['*'])
+db.init_app(app)
+cors.init_app(app, origins=['*'])
 
 # Import models
 from models.user import User
