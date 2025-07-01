@@ -1,0 +1,36 @@
+# Core Flask dependencies
+Flask==3.1.0
+Flask-SQLAlchemy==3.1.1
+Flask-CORS==5.0.0
+Werkzeug==3.1.3
+
+# Authentication & Security
+PyJWT==2.10.1
+google-auth==2.37.0
+google-auth-oauthlib==1.2.1
+google-auth-httplib2==0.2.0
+
+# Google APIs (lightweight versions)
+google-api-python-client==2.156.0
+google-cloud-core==2.4.1
+
+# AI - Lightweight alternatives
+google-generativeai==0.8.3
+
+# Database
+SQLAlchemy==2.0.41
+
+# Vector Database - Lightweight alternative
+chromadb==0.5.23
+
+# HTTP & Utilities
+requests==2.32.3
+urllib3==2.5.0
+certifi==2024.12.14
+
+# Production server
+gunicorn==23.0.0
+
+# Development utilities
+python-dotenv==1.0.1
+

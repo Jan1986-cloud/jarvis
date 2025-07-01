@@ -2,11 +2,11 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "cd jarvis-backend && gunicorn --bind 0.0.0.0:$PORT --workers 2 wsgi:application"
+startCommand = "gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 120 wsgi:application"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
 
 [environments.production]
-variables = { FLASK_ENV = "production" }
+variables = { FLASK_ENV = "production", PYTHONPATH = "/app/src" }
 
