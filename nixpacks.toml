@@ -4,6 +4,9 @@ names=["python", "node"]
 [phases.install]
 commands=["pip install -r jarvis-backend-fixed/requirements.txt", "npm install --prefix jarvis-frontend-fixed"]
 
+[phases.build]
+commands=["node build.js"]
+
 [start]
 
 command="cd jarvis-backend-fixed && gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 120 wsgi:application"
