@@ -28,4 +28,4 @@ COPY jarvis-backend-fixed/ ./
 COPY --from=frontend-builder /app/jarvis-frontend-fixed/dist ./static
 
 # Voer de applicatie uit
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "--workers", "2", "wsgi:application"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:$PORT --workers 2 wsgi:application"]
