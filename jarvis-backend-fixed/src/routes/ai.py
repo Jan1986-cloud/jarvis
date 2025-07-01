@@ -4,7 +4,7 @@ import random
 from models.user import User
 from models.conversation import Conversation
 from models.message import Message
-from main import db
+from extensions import db
 
 ai_bp = Blueprint('ai', __name__)
 

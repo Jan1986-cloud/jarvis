@@ -4,7 +4,7 @@ import os
 from models.user import User
 from models.conversation import Conversation
 from models.message import Message
-from main import db
+from extensions import db
 
 user_bp = Blueprint('user', __name__)
 
